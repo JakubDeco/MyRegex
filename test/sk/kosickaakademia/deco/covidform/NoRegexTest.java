@@ -22,6 +22,7 @@ class NoRegexTest {
 
         assertFalse(object.isOPValid("ZB129"));
         assertFalse(object.isOPValid(""));
+        assertFalse(object.isOPValid(" "));
         assertFalse(object.isOPValid(null));
         assertFalse(object.isOPValid("1256asdk"));
     }
