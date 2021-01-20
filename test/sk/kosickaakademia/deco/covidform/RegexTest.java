@@ -45,4 +45,25 @@ class RegexTest {
         assertFalse(object.isSPZValid("a9123oz"));
         assertFalse(object.isSPZValid(null));
     }
+
+    @Test
+    void isPhoneNumbValid() {
+        assertTrue(object.isPhoneNumbValid(" +421915789456"));
+        assertTrue(object.isPhoneNumbValid("00421915789456"));
+        assertTrue(object.isPhoneNumbValid("0915789456 "));
+        assertTrue(object.isPhoneNumbValid("  0915789456"));
+        assertTrue(object.isPhoneNumbValid("  0915789456"));
+
+        assertFalse(object.isPhoneNumbValid(" +421115789456"));
+        assertFalse(object.isPhoneNumbValid(" +42111578kj56"));
+        assertFalse(object.isPhoneNumbValid(" +00421915789456"));
+        assertFalse(object.isPhoneNumbValid("091578945 "));
+        assertFalse(object.isPhoneNumbValid(null));
+        assertFalse(object.isPhoneNumbValid(""));
+        assertFalse(object.isPhoneNumbValid(" "));
+        assertFalse(object.isPhoneNumbValid(" 0907453"));
+        assertFalse(object.isPhoneNumbValid(" 0907453a89"));
+        assertFalse(object.isPhoneNumbValid(" 0907453*89"));
+        assertFalse(object.isPhoneNumbValid(" 09074535646542158"));
+    }
 }

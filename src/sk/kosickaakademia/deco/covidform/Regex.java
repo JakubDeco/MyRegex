@@ -14,4 +14,10 @@ public class Regex {
         str=str.toUpperCase().trim();
         return Pattern.matches("[A-Z]{2}\\w{5}",str);
     }
+
+    public boolean isPhoneNumbValid(String str){
+        if (str==null) return false;
+        str=str.trim();
+        return Pattern.matches("(0|\\+421|00421)9\\d{8}",str);
+    }
 }
