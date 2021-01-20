@@ -26,4 +26,23 @@ class RegexTest {
         assertFalse(object.isOPValid(null));
         assertFalse(object.isOPValid("1256asdk"));
     }
+
+    @Test
+    void isSPZValid() {
+        assertTrue(object.isSPZValid("ab1M3Ka"));
+        assertTrue(object.isSPZValid("ab123ka  "));
+        assertTrue(object.isSPZValid(" ab12345  "));
+        assertTrue(object.isSPZValid(" ABeztox  "));
+        assertTrue(object.isSPZValid(" abezto9  "));
+        assertTrue(object.isSPZValid("ab1zto9  "));
+        assertTrue(object.isSPZValid("ab1zto9"));
+
+        assertFalse(object.isSPZValid("1b1zto9"));
+        assertFalse(object.isSPZValid(""));
+        assertFalse(object.isSPZValid("1"));
+        assertFalse(object.isSPZValid("A"));
+        assertFalse(object.isSPZValid("ak123o"));
+        assertFalse(object.isSPZValid("a9123oz"));
+        assertFalse(object.isSPZValid(null));
+    }
 }
