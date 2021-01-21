@@ -65,5 +65,6 @@ class RegexTest {
         assertFalse(object.isPhoneNumbValid(" 0907453a89"));
         assertFalse(object.isPhoneNumbValid(" 0907453*89"));
         assertFalse(object.isPhoneNumbValid(" 09074535646542158"));
+        assertFalse(object.isPhoneNumbValid("  0815789456"));
     }
 }
