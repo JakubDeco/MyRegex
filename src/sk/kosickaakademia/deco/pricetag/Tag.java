@@ -3,7 +3,12 @@ package sk.kosickaakademia.deco.pricetag;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Tag {
     public boolean isPriceTagValid(String str){
@@ -12,7 +17,7 @@ public class Tag {
         return Pattern.matches("^(0|0(,|.)(\\d[1-9]|[1-9]\\d)|[1-9]\\d*((,|.)(\\d[1-9]|[1-9]\\d)?))$",str);
     }
 
-    public void checkFileValues(String filepath){
+    public void checkFileValuesBR(String filepath){
         try{
             FileReader fileReader=new FileReader(filepath);
             BufferedReader bufferedReader=new BufferedReader(fileReader);
@@ -25,6 +30,22 @@ public class Tag {
                 else System.out.println("nie");
             }
             fileReader.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void checkFileValuesStream(String filepath) {
+        try{
+            BufferedReader bufferedReader=Files.newBufferedReader(Paths.get(filepath));
+            List<String> list=bufferedReader.lines().collect(Collectors.toList());
+            for (String temp :
+                    list) {
+                System.out.print(temp+" - ");
+                if (isPriceTagValid(temp))
+                    System.out.println("ano");
+                else System.out.println("nie");
+            }
         }catch (IOException e){
             e.printStackTrace();
         }
