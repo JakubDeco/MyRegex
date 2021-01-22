@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -19,8 +18,7 @@ public class Tag {
 
     public void checkFileValuesBR(String filepath){
         try{
-            FileReader fileReader=new FileReader(filepath);
-            BufferedReader bufferedReader=new BufferedReader(fileReader);
+            BufferedReader bufferedReader=new BufferedReader(new FileReader(filepath));
 
             String line;
             while ((line=bufferedReader.readLine())!=null){
@@ -29,7 +27,7 @@ public class Tag {
                     System.out.println("ano");
                 else System.out.println("nie");
             }
-            fileReader.close();
+            bufferedReader.close();
         }catch (IOException e){
             e.printStackTrace();
         }
